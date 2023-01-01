@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetnote.R
+import com.example.jetnote.components.NoteInputText
 
 @Composable
 fun NoteScreen() {
@@ -33,7 +34,9 @@ fun NoteScreen() {
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            NoteInputText(text = "hello", label = "Hello", onTextChange = {
 
+            })
         }
     }
 }
