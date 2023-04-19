@@ -2,6 +2,9 @@ package com.example.jetnote.repository
 
 import com.example.jetnote.model.Note
 import com.example.jetnote.model.NoteDatabaseDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class NoteRepository @Inject constructor(private val noteDatabaseDao: NoteDatabaseDao) {
@@ -10,5 +13,5 @@ class NoteRepository @Inject constructor(private val noteDatabaseDao: NoteDataba
     suspend fun updateNote(note: Note) = noteDatabaseDao.update(note)
     suspend fun deleteNote(note: Note) = noteDatabaseDao.deleteNote(note)
     suspend fun deleteAllNotes() = noteDatabaseDao.deleteAll()
-    suspend fun getAllNotes() = noteDatabaseDao.getNotes()
+    suspend fun getAllNotes() = noteDatabaseDao.getNotes().flowOn(Dispatchers.IO).conflate()
 }

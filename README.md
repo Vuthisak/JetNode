@@ -3,3 +3,5 @@
 - Coroutine
 - Hilt
 - Room
+- ViewModel
+- Repository

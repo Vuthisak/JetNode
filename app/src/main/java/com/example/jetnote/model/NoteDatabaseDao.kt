@@ -1,6 +1,5 @@
 package com.example.jetnote.model
 
-import androidx.compose.runtime.MutableState
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
