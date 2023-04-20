@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetnote.screen.NoteScreen
@@ -23,7 +24,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetNoteTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -37,10 +37,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NotesApp(noteViewModel: NoteViewModel = viewModel()) {
-    NoteScreen(noteViewModel.getAllNotes(), onAddNote = {
-        noteViewModel.addNode(it)
-    }, onRemoveNote = {
-        noteViewModel.removeNode(it)
-    })
+fun NotesApp(noteViewModel: NoteViewModel) {
+    val noteList = noteViewModel.noteList.collectAsState().value
+    NoteScreen(
+        noteList,
+        onAddNote = { noteViewModel.addNode(it) },
+        onRemoveNote = { noteViewModel.deleteNote(it) }
+    )
 }
