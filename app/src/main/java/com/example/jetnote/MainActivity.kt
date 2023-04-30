@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @ExperimentalComposeUiApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,8 +29,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val viewModel: NoteViewModel by viewModels()
-                    NotesApp(viewModel)
+                    val noteViewModel = viewModel<NoteViewModel>()
+                    NotesApp(noteViewModel)
                 }
             }
         }

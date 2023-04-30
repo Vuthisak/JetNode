@@ -64,8 +64,8 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
     //Hilt-Dagger
-    implementation 'com.google.dagger:hilt-android:2.45'
-    kapt 'com.google.dagger:hilt-compiler:2.45'
+    implementation 'com.google.dagger:hilt-android:2.39'
+    kapt 'com.google.dagger:hilt-compiler:2.39'
 
     //Room
     implementation "androidx.room:room-runtime:$room_version"
